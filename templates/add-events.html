@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Events
+{% endblock %}
+
+{% block main %}
+    <!-- Alert for prohibited characters -->
+    <div class="alert alert-warning">
+        <strong>Cannot include characters ', ", \, & in event titles.</strong>
+    </div>
+    <!-- Form for entering new event information -->
+    <table class="d-flex justify-content-center">
+        <form action="/add-events" method="post">
+            <div class="mb-3">
+                <tr>
+                    <td>Enter Event</td>
+                    <td><input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="event-name" name="event-name" type="text"></td>
+                </tr>
+                <tr>
+                    <td>Start Date</td>
+                    <td><input class="form-control mx-auto w-auto" id="date" name="start-date" type="date"></td>
+                    <td>Start Time</td>
+                    <td><input class="form-control mx-auto w-auto" id="time" name="start-time" type="time"></td>
+                </tr>
+                <tr>
+                    <td>End Date</td>
+                    <td><input class="form-control mx-auto w-auto" id="date" name="end-date" type="date"></td>
+                    <td>End Time</td>
+                    <td><input class="form-control mx-auto w-auto" id="time" name="end-time" type="time"></td>
+                </tr>
+                <tr>
+                    <td>Event Color</td>
+                    <td>
+                        <select name="color" class="form-select mx-auto w-auto">
+                            <option disabled selected value="">Default Blue</option>
+                            {% for color in colors %}
+                                <option value="{{ color }}">{{ color }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn btn-primary" type="submit">Enter</button>
+                    </td>
+                </tr>
+            </div>
+        </form>
+    </table>
+{% endblock %}

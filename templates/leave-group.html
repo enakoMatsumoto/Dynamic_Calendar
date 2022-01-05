@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Leave Group
+{% endblock %}
+
+{% block main %}
+    <!-- Space designated for alerts -->
+    <div class="alert alert-warning">
+        <strong>{{ warning }}</strong>
+    </div>
+    <!-- Form/button to leave group -->
+    <form action="/leave-group" method="post" id="padding">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-primary" type="submit">Leave Group</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

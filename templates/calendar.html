@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    {{ username }} Calendar
+{% endblock %}
+
+{% block main %}
+    <h3 class="hmargin">{{ username }} Calendar</h3>
+    <script>
+        // Calendar template following the FullCalendar library
+        document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            },
+            // Let events correspond to a javascript array of objects with title and start is their properties.
+            events: [
+                // Use Jinja syntax to loop through events from app.py
+                {% for event in events %}
+                {
+                    title: '{{event.title}}',
+                    start: '{{event.start}}',
+                    end: '{{event.end}}',
+                    color: '{{event.color}}'
+                },
+                {% endfor %}
+            ]
+            });
+            calendar.render();
+        });  
+    
+    </script>
+    <div id='calendar'></div>
+{% endblock %}

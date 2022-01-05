@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    See Groupmates
+{% endblock %}
+
+{% block main %}
+    <!-- Space designated for alerts -->
+    <div class="alert alert-warning">
+        <strong>{{ warning }}</strong>
+    </div>
+    <!-- Create a drop down menu for the possible groupmates  -->
+    <form action="/groupmates" method="post">
+        <div class="mb-3">
+            <select name="groupmate" class="form-select mx-auto w-auto">
+                <option disabled selected value="">Select Groupmate</option>
+                {% for groupmate in groupmates %}
+                    <option value="{{ groupmate }}">{{ groupmate.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-primary" type="submit">See Their Schedule</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+{% endblock %}

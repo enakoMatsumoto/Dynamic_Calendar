@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Delete Events
+{% endblock %}
+
+{% block main %}
+    <!-- Space designated for alerts -->
+    <div class="alert alert-warning">
+        <strong>{{ warning }}</strong>
+    </div>
+    <!-- Create a drop down menu for the possible events to delete -->
+    <form action="/delete-events" method="post">
+        <div class="mb-3">
+            <select name="event" class="form-select mx-auto w-auto">
+                <option disabled selected value="">Event</option>
+                {% for event in list_events %}
+                    <option value="{{ event }}">{{ event.title }} || {{ event.time }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <button class="btn btn-primary" type="submit" class="center">Delete Event</button>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}

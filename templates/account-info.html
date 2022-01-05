@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Account Info
+{% endblock %}
+
+{% block main %}
+    <!-- Account information table: username and groupname -->
+    <table class="table">
+        <tr>
+            <td class="text-center">Username: </td>
+            <td class="text-start">{{ user["username"] }}</td>
+        </tr>
+        <tr>
+            <td class="text-center">Group Name: </td>
+            <td class="text-start">{{ user["groupname"] }}</td>
+        </tr>
+    </table>
+{% endblock %}
